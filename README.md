@@ -2,7 +2,8 @@
 
 ## Architectural Diagram
 
-![image](https://github.com/user-attachments/assets/67ecf065-f60b-4c28-97fe-07412783bc5f)
+![image](https://github.com/user-attachments/assets/1246710b-217c-404c-ac71-75620599e699)
+
 
 *This diagram illustrates the entire full-stack architecture of a React-based To-Do application using AWS Amplify Gen2. Code developed locally in VS Code is committed to GitHub, triggering a CI/CD pipeline that deploys a React TypeScript frontend via S3 and CloudFront for secure content delivery. Amazon Cognito manages user authentication, integrated with IAM Identity Centre for centralized permissions. AWS AppSync provides a GraphQL API that enforces access rules and enables real-time updates, while Amazon DynamoDB stores To-Do items in a serverless NoSQL database. Developers can test changes in Amplify Sandbox environments before merging, and AWS Amplify Console handles continuous integration and deployment. This setup yields a secure, scalable, and maintainable solution with minimal operational overhead.*
 
@@ -35,7 +36,8 @@ Before writing any code, you need an AWS account and to configure Amplify with t
   - Attach the **AmplifyBackendDeployFullAccess** policy to this set.  
   This AWS-managed policy grants Amplify permission to create and manage the backend cloud resources on your behalf. For example, in the screenshot below, you can see the AmplifyBackendDeployFullAccess policy being selected for a new permission set:
 
-  ![image](https://github.com/user-attachments/assets/61a3af36-bc8a-4075-9721-399bf217d631)
+  ![image](https://github.com/user-attachments/assets/e603e9c2-a885-43c4-9c5e-dd55f52e5d35)
+
 
 - **Create an IAM Identity Center User** (e.g. “amplify-admin”) and assign the above permission set to that user (and assign the user access to your AWS account). This user will be used for Amplify deployments. AWS will prompt to set a password for the new user via email.
 - **Configure AWS CLI Credentials:**  
@@ -59,64 +61,46 @@ Amplify provides a GitHub template that already contains a React app (built with
 - **Create the project from the template:**  
   Click the “Create repository from template” link on Amplify’s QuickStart page (or navigate to the AWS Amplify GitHub template). This lets you create a new repository on your GitHub account with all the starter code. The template uses React + Vite and includes an `amplify/` folder with predefined backend resources (a to-do database and authentication). Give your new repo a name (e.g., “amplify-todo-app”) and create it.
 
-  ![image](https://github.com/user-attachments/assets/b52fbb64-d13f-4b64-95b2-08c912b4eead)
+![image](https://github.com/user-attachments/assets/643890e2-f2a3-4438-8504-2b943f1c8447)
 
-  ![image](https://github.com/user-attachments/assets/7fe2ef9d-1bd6-4d67-8d28-06c36b6b1246)
+![image](https://github.com/user-attachments/assets/dd313111-576c-462b-9713-9dd262e950ea)
 
 - **Deploy the app with Amplify Hosting:**  
   Now go to the AWS Amplify Console (in AWS Management Console). Click **“New app” > “Host web app”**. Amplify will guide you to connect a repository. Choose GitHub as the source and authorize Amplify to access your GitHub (if you haven’t before). Then select the repository and branch (e.g., the main branch of the repo you just created) and continue. Accept the default settings and click **“Save and deploy.”** Amplify will set up a continuous deployment pipeline and start provisioning the backend and building the frontend. The screenshot below shows the Amplify Console’s connect process where you select your repo and branch:
 
-  ![image](https://github.com/user-attachments/assets/9334a9d4-25bb-470e-8465-448bd1e8dcdc)
+![image](https://github.com/user-attachments/assets/010cb64d-5834-4703-8c7f-ad3b0fde26e6)
+![image](https://github.com/user-attachments/assets/45109519-3044-492e-b8ba-0538f452c58b)
+![image](https://github.com/user-attachments/assets/2bd3f698-02c2-4f53-a1e4-b0020a318068)
+![image](https://github.com/user-attachments/assets/74e8bca7-03f3-4368-9c0d-f7e5844a7d62)
+![image](https://github.com/user-attachments/assets/be3c0800-579e-4909-b640-b41009c69633)
+![image](https://github.com/user-attachments/assets/a8f52fbc-7730-49c5-b102-478c0bd4948a)
+![image](https://github.com/user-attachments/assets/1db9e652-e304-4ce6-8184-dcb0cecc89a7)
+![image](https://github.com/user-attachments/assets/ff4d6177-0030-497a-b2a4-bb543f25c52a)
+![image](https://github.com/user-attachments/assets/d6e669c2-5527-456d-b22b-e3944d7ef1fb)
+![image](https://github.com/user-attachments/assets/433daf78-747a-4a58-8e89-bf21d75123e0)
+![image](https://github.com/user-attachments/assets/a96110e5-5a54-4c2a-9de3-829ba099939a)
+![image](https://github.com/user-attachments/assets/a7ef64f2-e8aa-466d-977b-834bc9b1d847)
+![image](https://github.com/user-attachments/assets/dc72fbd9-f0f4-4f0d-b42a-dd26ffbc547e)
 
-  ![image](https://github.com/user-attachments/assets/fecfcff9-48ad-48c5-9f5c-6c04495b3449)
-
-  ![image](https://github.com/user-attachments/assets/bd76c069-b300-4749-95d6-c6c5f9067f2e)
-
-  ![image](https://github.com/user-attachments/assets/3850351f-a86a-49e8-a034-54a1b9399d6f)
-
-  ![image](https://github.com/user-attachments/assets/54f4255b-c05e-4d97-aaae-d29e27e35a6a)
-
-  ![image](https://github.com/user-attachments/assets/12fde728-fbd9-4df5-9f9f-db54458f1459)
-
-  ![image](https://github.com/user-attachments/assets/91a06f90-4dde-4600-ae1b-c5ecf97fb59d)
-
-  ![image](https://github.com/user-attachments/assets/43eaa5ff-af14-4dfe-9bd3-1288db09373c)
-
-  ![image](https://github.com/user-attachments/assets/29d8578b-da68-4b9b-b7b5-4d7113b572bf)
-
-  ![image](https://github.com/user-attachments/assets/66a30ee5-19bf-49dc-996b-aec0875bbff6)
-
-  ![image](https://github.com/user-attachments/assets/6cc7d9e4-49ed-49af-b1d1-7c7d3cc7e806)
-
-  ![image](https://github.com/user-attachments/assets/10c6d4f2-2ccb-4068-ac16-89fc50da4caf)
-
-  ![image](https://github.com/user-attachments/assets/5377eeb9-171c-4cf0-b9b5-ff6c6a6ae986)
 
   The Amplify Console “Create new app” wizard – here you connect your GitHub repo (step 1) and select the repository and branch to deploy (step 2). Amplify will then provision your backend and set up a CI/CD pipeline (steps 3 and 4). In this example, the pipeline stages (Provision, Build, Deploy, Verify) are shown for the main branch deployment.
 
 - **Wait for deployment:**  
   Amplify will provision the necessary AWS resources (this may take a few minutes). Behind the scenes, Amplify is using CloudFormation/CDK to set up a DynamoDB table for to-dos, an AppSync GraphQL API, and a Cognito User Pool for auth (since the template includes auth and data). You can watch the progress in the Amplify Console’s “Deployments” section. Once it’s done, you’ll see a green “Deployed” status. The front-end is now hosted at a domain like `https://main.branchid.amplifyapp.com` (Amplify provides a default domain). You can click **“Visit deployed URL”** to see the live app. It should load a basic to-do app interface (with a prompt to sign in, since auth is enabled). At this point, the app’s backend (API, database, auth) is up in the cloud, and the front-end is hosted. 🎉
+![image](https://github.com/user-attachments/assets/51fbb100-879f-4cd4-92c6-b40278a6ced3)
+![image](https://github.com/user-attachments/assets/840e27c0-9cb7-4438-9c10-5d34197a8452)
+![image](https://github.com/user-attachments/assets/4b8d5e49-cc36-4538-af79-0ba39129dcba)
+![image](https://github.com/user-attachments/assets/4c359752-f868-4bc8-935e-239a30d63b8a)
 
-  ![image](https://github.com/user-attachments/assets/39c3c5af-cb03-4d84-87a6-a322150b6573)
-
-  ![image](https://github.com/user-attachments/assets/3c28338b-5310-4834-8e2d-ce7be1c4597f)
-
-  ![image](https://github.com/user-attachments/assets/bbc63279-e5d3-420d-8ede-8075b970e1bc)
-
-  ![image](https://github.com/user-attachments/assets/764bfd44-f0ef-407f-b7dd-d47e5c53312e)
 
 - **Examine the project structure:**  
   It’s good to understand the code you just deployed. If you open the GitHub repository (clone it to your machine or view on GitHub), you’ll see the project layout. To clone your repository to your local IDE, go to your GitHub page of the cloned template from Amplify and copy the HTTPS code. Enter your IDE, making sure you are in the directory and folder you want the code to live, and enter the git clone command with the HTTPS link you copied as shown below.
+![image](https://github.com/user-attachments/assets/1086fa0e-a910-4f0b-9160-a97442f4bb2d)
+![image](https://github.com/user-attachments/assets/d62bb918-5cb4-4bff-8fa2-a463ce251abb)
+![image](https://github.com/user-attachments/assets/3b5bc427-8c22-4bfc-b4dd-f5f86345a12b)
 
-  ![image](https://github.com/user-attachments/assets/94bb69fe-7e56-425c-9e4d-f35e6f7af885)
+![image](https://github.com/user-attachments/assets/f1187238-5121-4d92-8801-5ac1b9f3fe7e)
 
-  ![image](https://github.com/user-attachments/assets/54741ff6-c901-4b84-b2fb-c379b561fdec)
-
-  ![image](https://github.com/user-attachments/assets/e5d72c9a-13c2-443d-a0f8-0768cf70b16d)
-
-  ![image](https://github.com/user-attachments/assets/fe2f7bfe-ccff-46d1-bf95-4d19243d2aec)
-
-  ![image](https://github.com/user-attachments/assets/77b0e717-557c-416f-8e66-2852675764bb)
 
   **Project Structure:**
 
@@ -154,10 +138,10 @@ To install these dependencies in our working directory, we use the following com
 ```bash
 npm install
 ```
+![image](https://github.com/user-attachments/assets/7d49ebdd-c2c4-4eb3-8d43-bf38b37955f0)
 
-![image](https://github.com/user-attachments/assets/1dae8ec9-0d24-4aef-80e7-8e0bb80288ba)
+![image](https://github.com/user-attachments/assets/f0104ef6-1b74-4947-9e47-15937fe0748c)
 
-![image](https://github.com/user-attachments/assets/792706f8-ac03-4bc0-96a0-d7164c7de258)
 
 This command reads the `package.json` file and installs all the required packages into the `node_modules` directory. Additionally, it ensures that the versions specified in `package-lock.json` are maintained, ensuring consistency across different environments.
 
@@ -171,7 +155,8 @@ Since the backend is ready, we just need to add a sign-up/sign-in UI in our Reac
 
 In the React source, open `src/main.tsx`. This is where the React app is initialized. We need to wrap our `<App />` component with the `<Authenticator>` from Amplify UI and configure Amplify with our backend settings. For example:
 
-![image](https://github.com/user-attachments/assets/9af94cb1-3870-462c-babe-b3239c650255)
+![image](https://github.com/user-attachments/assets/b7e19d48-36a7-438f-be97-f3448d3667a9)
+
 
 **What’s happening here?**  
 - We import the `amplify_outputs.json` which contains all the identifiers and endpoints for our cloud resources (API URL, region, User Pool ID, etc.).  
@@ -186,39 +171,38 @@ This means you don’t have to manually code the forms for login – Amplify doe
 
 To develop and test the app on your machine, clone the repository and install dependencies (if you have not done so as described already). In the Amplify Console, go to your app’s main branch page, and find the **“Download amplify_outputs.json”** button under “Deployed backend resources.”
 
-![image](https://github.com/user-attachments/assets/d8186d9f-9631-4c03-b26f-7029d77ed9f0)
+![image](https://github.com/user-attachments/assets/17fee4d9-7df0-4784-bf4e-82093b2cb45a)
 
-![image](https://github.com/user-attachments/assets/83ee6496-60f3-47fb-9091-5fd170de5c32)
+![image](https://github.com/user-attachments/assets/1ed16a3b-ebc9-4d1c-ab61-d7f653abf662)
 
 Amplify Console after deployment – under **Deployments > Deployed backend resources**, use the “Download amplify_outputs.json” button to get the configuration file for your backend. This file is needed to run the app locally and is used by Amplify’s library to know the backend’s details.
+![image](https://github.com/user-attachments/assets/d3766b4a-52d4-4eec-83c5-983c9577d544)
 
-![image](https://github.com/user-attachments/assets/094c3b2a-3053-4d39-9f2c-68372ef18721)
+![image](https://github.com/user-attachments/assets/5c9b989e-cce3-4188-9bfe-fa2d5ca22dc8)
 
-![image](https://github.com/user-attachments/assets/45002bb2-63ca-4bc7-8bca-1ea671c177d0)
 
 Download that JSON file and place it in the project’s root folder (as shown in the structure above). This file lets your local front-end know how to talk to the cloud backend. Then run `npm install` (if you haven’t done so already as described) and `npm start` (or `npm run dev` for Vite as in our case). Your app will compile and open at [http://localhost:3000](http://localhost:3000) or [http://localhost:5173](http://localhost:5173) (for Vite). You should see the to-do UI.
+![image](https://github.com/user-attachments/assets/efc4e446-a0f9-4d0c-b6ee-2e8bff587470)
 
-![image](https://github.com/user-attachments/assets/4a607ae4-35f7-46f1-82ac-81d5c8c28498)
-
-![image](https://github.com/user-attachments/assets/ab6b4cfb-5328-4d57-a628-36b5cea86dbc)
+![image](https://github.com/user-attachments/assets/cd48f914-025a-4464-add6-fdf9d3ce9139)
 
 ---
 
 ## Implementing the Login UI
 
 This guide explains how to set up and customize the login user interface (UI) in your Amplify-powered React application. The login UI lets users sign up, sign in, and manage their credentials using Amplify’s pre-built Authenticator component. The QuickStart below provides guide on how to update the code to include a log in UI.
+![image](https://github.com/user-attachments/assets/0aff9ab6-0b14-4e4a-bf2d-2587b90cb8c8)
 
-![image](https://github.com/user-attachments/assets/76f067d0-6319-441f-8c5c-86be0631b3eb)
+![image](https://github.com/user-attachments/assets/a80a4a56-8f20-466e-b23b-db83680b745c)
 
-![image](https://github.com/user-attachments/assets/587dfa6c-1d66-44a4-86ba-9a27ec05e678)
 
 ### Wrapping Your Application with the Authenticator Component
 
 The key to implementing the login UI is wrapping your main application component with Amplify’s `<Authenticator>` component. This component automatically provides a complete authentication flow (sign-up, sign-in, password reset, etc.) without writing the forms manually. We must import the Authenticator UI as shown below if we want users to first log in using their user profiles, in our own project is email as shown above.
 
-![image](https://github.com/user-attachments/assets/835a9246-ca28-4d2b-9590-46c293aed57b)
+![image](https://github.com/user-attachments/assets/4cd47fa8-3665-41f3-a3b5-12b831a05977)
 
-![image](https://github.com/user-attachments/assets/3dab276e-1999-4c40-994a-afeafcc0ba7d)
+![image](https://github.com/user-attachments/assets/07b779ed-a665-4587-a1da-18da14908210)
 
 **What It Does:**  
 When a user visits your application, if they are not signed in, the Authenticator will show the login screen. Once authenticated, the main app content (rendered inside `<App />`) is displayed.
@@ -232,14 +216,12 @@ While the default look works well for most projects, you can also customize styl
 
 - **Testing the Login UI Locally:**  
   After setting up the login UI, start your development server (`npm run dev` or refresh your browser where your local host is running). Open your browser and navigate to your local host address. You should see the login interface provided by Amplify. Interact with the Authenticator, try signing up or signing in. The UI should smoothly transition from the login forms to your main app upon successful authentication. We also added two more Todo’s to the list.
+![image](https://github.com/user-attachments/assets/f68bffcb-6c7a-4a52-a946-54d4067467cf)
+![image](https://github.com/user-attachments/assets/c4a1197f-6284-436c-bedf-59433417b168)
 
-  ![image](https://github.com/user-attachments/assets/a9cc28a8-41f8-49f4-b2d6-7f528d26c00f)
+ ![image](https://github.com/user-attachments/assets/63da3cda-b1de-4692-b5d1-c5b544dcbb69)
 
-  ![image](https://github.com/user-attachments/assets/4b1f3b3b-9e4f-400c-a342-2f06c33f17c1)
-
-  ![image](https://github.com/user-attachments/assets/fc6b494c-0bfa-4a5f-b2ba-4471a188f734)
-
-  ![image](https://github.com/user-attachments/assets/09b37ac2-1de9-4443-9ced-24264f0bddf4)
+![image](https://github.com/user-attachments/assets/066da25b-70a1-4e22-b912-da562b735608)
 
 By following these steps, you’ve implemented a robust login UI using Amazon Amplify’s Authenticator component in your React app. This implementation handles all the heavy lifting for user authentication while allowing you the flexibility to customize the appearance and behaviour as needed.
 
@@ -252,18 +234,21 @@ With Amplify, creating a backend for your app is declarative. In our to-do app, 
 - **Data Model Definition (Todo items):**  
   In the `amplify/data/resource.ts` file, you’ll find a schema defined using Amplify’s Data Modeling API. For example, a simple Todo model could be defined like:
 
-  ![image](https://github.com/user-attachments/assets/d80d5af0-1f42-4357-98b8-12f2c77c2c2f)
+![image](https://github.com/user-attachments/assets/164162c6-a7b4-40d4-b763-5c3b8e725c42)
+
 
   This code says we have a model Todo with a string field `content`. When Amplify deploys, it creates a DynamoDB table for Todo items and generates a GraphQL API (via AWS AppSync) with queries, mutations, and subscriptions for the Todo model. The front-end can use Amplify’s DataStore or API client to interact with this model – for example, create new todos, list todos, etc., without writing any server code. The starter project’s todo model was set up for real-time updates, meaning whenever a todo is added or deleted, all clients get updated via WebSocket (AppSync subscriptions).
 
 - **Authorization Rules:**  
   By default, the to-do API in the template was open to any authenticated user (all logged-in users see all todos). We likely want each user to see only their own todos. Amplify makes this easy with owner-based auth rules. In code, we can update the model to add an ownership rule. For instance, Amplify uses the concept of an “owner” field (usually the user’s identity) to restrict data access. In our Todo model definition, we could specify:
 
-  ![image](https://github.com/user-attachments/assets/5bd265cc-43d5-41cb-b2e0-c86a19014315)
+ ![image](https://github.com/user-attachments/assets/f0d20cfb-7bca-43d4-b585-fe6ac6b055e3)
+
 
   And configure the data to use user authentication as its default auth mode. For example:
 
-  ![image](https://github.com/user-attachments/assets/69167138-00ec-4fa3-b2cb-5e916732c568)
+![image](https://github.com/user-attachments/assets/8948f102-6041-4039-94fb-2b2ca6e01491)
+
 
   This change means each Todo item will have an owner (the user who created it), and only that user can read or delete it. In the Amplify QuickStart, this step was done in a “cloud sandbox” environment and then deployed to the main backend – but conceptually, it’s part of designing your backend. After implementing such a change, you would run an Amplify CLI command (in Amplify Gen 2, `npx ampx sandbox` for testing in a temporary environment, then commit and push to deploy) to apply it. However, we will do this in the next steps.
 
@@ -288,7 +273,8 @@ To utilize a sandbox environment, navigate to your Amplify Gen 2 application dir
 npm ampx sandbox
 ```
 
-![image](https://github.com/user-attachments/assets/98ef36b6-f49c-47b1-b808-1af3d6013797)
+![image](https://github.com/user-attachments/assets/7f815c09-126f-44b5-827f-f9f54c32b2da)
+
 
 **Why do this?**  
 `npm ampx sandbox` leverages Amplify Gen2’s local setup to create a temporary (sandbox) environment in the cloud that mirrors your backend configuration. You’ll be prompted for some inputs, such as “Select an AWS profile” or “Use the default environment name?” This environment will be separate from any existing main or dev environment.
@@ -311,11 +297,13 @@ This error happens because the Amplify CLI cannot find valid AWS credentials in 
 **How to fix it:**  
 Just like we described from the beginning of this project, make sure to set up your AWS credentials properly (using `aws configure sso` or `aws configure`). After configuring, re-run `npm ampx sandbox`. You will get a confirmation from Amplify as it pops with the message:
 
-![image](https://github.com/user-attachments/assets/a3f8779e-cfd1-4268-b84f-6273c95d33ca)
+![image](https://github.com/user-attachments/assets/9b3ea445-56c8-46d1-a35d-ce7935f970fa)
+
 
 **Confirming the Sandbox Creation**
 
-![image](https://github.com/user-attachments/assets/5398c457-37bc-4eb1-98bc-2abea1899e05)
+![image](https://github.com/user-attachments/assets/aef2cc80-5c11-4730-9336-fbdb2db63afd)
+
 
 Once the sandbox is successfully created, you will see a message in the terminal stating Amplify Sandbox with your AWS username and its stack. This means Amplify has provisioned a temporary set of resources (like AppSync API, DynamoDB tables, etc.) just for the sandbox environment, all named differently from your main environment.
 
@@ -362,7 +350,8 @@ Fix your schema in `amplify/data/resource.ts`, making sure each field type is su
 
 If you open the Amplify Console, you should see a new environment in the Environments list or a mention of Sandbox resources. It shows the Amplify Console with the newly created environment named “sandbox-dev” (or whichever name you used); in our case, it is “amplify-amplifyvitereacttemplate-chido-sandbox-74340f41f5”.
 
-![image](https://github.com/user-attachments/assets/f33aaf80-bd43-4213-9121-5e33922c1abd)
+![image](https://github.com/user-attachments/assets/ab6fd329-7e77-4c86-b0b5-541b8101b901)
+
 
 **Testing Changes**
 
@@ -380,26 +369,29 @@ By following these steps you’ve successfully deployed and tested changes in an
 
 We would want every user to have a separate environment when they log in into our ToDo app and this is what this next step is going to do. Implement per-user authentication and authorization.
 
-![image](https://github.com/user-attachments/assets/cd7d5827-8a4c-4a9e-895d-bb8eff8b7c0b)
+![image](https://github.com/user-attachments/assets/56ef4729-256f-414a-9d6d-49ebd81fcdcf)
+
 
 - **Open the schema file located at:** `amplify/data/resource.ts`
 - **Update the schema to implement per-user authorization.** This isolates each user's to-do items:
 
-  ![image](https://github.com/user-attachments/assets/26ab951e-75be-4999-9bb1-c0b2ff15409e)
+![image](https://github.com/user-attachments/assets/58678e05-692e-487a-8822-07ad01a7adda)
+
 
 - **Configure Authorization Modes:**  
   Ensure your schema's authorization mode is set to use AWS Cognito (userPool) by default, with an optional public API key for temporary access (useful for initial testing):
 
-  ![image](https://github.com/user-attachments/assets/fc76c92c-a6be-4b37-8198-8178913906db)
+ ![image](https://github.com/user-attachments/assets/3de5f02f-da0f-42d2-a66b-6c37cd461d0e)
+
 
   This configuration means authenticated users have isolated access via Cognito.
 
 - **Update React Frontend (useAuthenticator):**  
   Navigate to your React component (`src/App.tsx`) and import Amplify’s authentication hook:
 
-  ![image](https://github.com/user-attachments/assets/167d4da6-fb3f-4783-8a8e-b5fe5375dcee)
+![image](https://github.com/user-attachments/assets/8a4b3ab7-3447-41a6-9988-d74a50dd779d)
 
-  ![image](https://github.com/user-attachments/assets/2e3b7968-0dc0-413e-8b75-da9790ae7a8b)
+![image](https://github.com/user-attachments/assets/c7626f03-6a7b-4275-a2b7-8324b61a2983)
 
 This displays a personalized UI by fetching the currently authenticated user details.
 
@@ -421,7 +413,8 @@ The Amplify starter project already provided a basic UI in `App.tsx`, which we c
 - **Displaying Todos:**  
   In `App.tsx`, the code likely uses Amplify’s generated data client to fetch and subscribe to todos. Amplify Gen 2’s data library can generate a client (e.g., `client.models.Todo`) to interact with the Todo model. The starter app, for example, has:
 
-  ![image](https://github.com/user-attachments/assets/bf8606e7-2bcf-4e2f-8029-efee1c60c270)
+![image](https://github.com/user-attachments/assets/e867de18-c4b8-4f47-8784-a6c06f0750f9)
+
 
   *(The exact code can differ but Amplify handles real-time updates via subscriptions as noted.)*  
   The result is that the UI always has the latest list of todos in the `todos` state. We render this as a list of `<li>` items. Each to-do item displays its content text. If we implemented owner-based auth, users would only receive their own items from the API.
@@ -431,14 +424,14 @@ The Amplify starter project already provided a basic UI in `App.tsx`, which we c
 
 - **Deleting a Todo:**  
   We can implement a delete by adding an onClick to each item. In the QuickStart, they added a `deleteTodo(id)` function that calls `client.models.Todo.delete({ id })`. In the UI, they set each `<li>` to listen for click and call delete on its own ID. Our app can do the same – for instance, clicking a to-do could remove it. *(In a real app, you might use a trash icon button for clarity instead of clicking the list item text.)* Therefore, we updated the `App.tsx` with the code below to add the delete functionality.
+![image](https://github.com/user-attachments/assets/283206f7-86c1-420f-b846-5806cb39d90c)
 
-  ![image](https://github.com/user-attachments/assets/25a29c62-6677-4b15-a94e-ca384f62ab46)
+![image](https://github.com/user-attachments/assets/a700d0ec-9fc0-4782-a4ef-9e4213f1ede4)
 
-  ![image](https://github.com/user-attachments/assets/e516da19-578d-4ee3-b3a1-f6979671745e)
+![image](https://github.com/user-attachments/assets/55152ba5-3927-4ed1-8c70-788a7335e737)
 
-  ![image](https://github.com/user-attachments/assets/b934a2a8-5b21-422d-b8c5-797e0df032f6)
+![image](https://github.com/user-attachments/assets/be0a6253-f01e-4f22-b249-a3b27a871403)
 
-  ![image](https://github.com/user-attachments/assets/82be1e4c-bb0e-454e-baa9-52a584dd8df8)
 
 - **UI Components and Styling:**  
   We can style the app as we like. Amplify provides some UI primitives (like buttons, etc.), but since this is a simple app, basic HTML elements or your own CSS are fine. The template included some CSS (e.g., centering content, giving the app a max width, etc.). You can open `index.css` to adjust styles. For example, you might style the `<h1>` (title), the list items, and the new-task button to make the app look nice.
@@ -492,20 +485,18 @@ git commit -am "while adding some updated activities here"
 ```
 
 After that, we can then `git push` to push our latest code to GitHub and then trigger the CI/CD automatically to our Amplify too.
+![image](https://github.com/user-attachments/assets/dbb64434-42bf-4ff4-84e1-06b3e46976f1)
+![image](https://github.com/user-attachments/assets/34ce732e-5489-4858-9842-057eb65b37a4)
+![image](https://github.com/user-attachments/assets/85e7db35-d9c6-4428-9075-efd0dd93f9c6)
 
-![image](https://github.com/user-attachments/assets/d3400bb4-b01f-4d43-b07b-d9d513968afc)
+![image](https://github.com/user-attachments/assets/fea197d0-04c4-4c0b-9c03-baf0ffb63359)
 
-![image](https://github.com/user-attachments/assets/0e8c7fc2-a225-4c34-b127-5ea1fd1dcded)
-
-![image](https://github.com/user-attachments/assets/db3d93ea-5c67-4017-b825-b48ec3060b9d)
-
-![image](https://github.com/user-attachments/assets/40cf2b69-502c-4673-b129-cc3c10fec943)
 
 Afterwards, we tested our app to ensure the functionalities we implemented were properly integrated. We used two different email accounts to check if per-user account authorization worked as intended, verifying that each user's to-do items were isolated and not visible to other users.
+![image](https://github.com/user-attachments/assets/1f1fb918-8b8d-428b-b2ae-b21007b0bb11)
 
-![image](https://github.com/user-attachments/assets/e34d4360-42cc-4592-a5fd-d1a87f22dd04)
+![image](https://github.com/user-attachments/assets/52e14985-c671-4735-8748-fc3a8039e206)
 
-![image](https://github.com/user-attachments/assets/c650f8d3-67bb-48ff-8f69-191deb907c75)
 
 ---
 
